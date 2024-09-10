@@ -1,0 +1,58 @@
+// Function to handle form submission for creating a facility
+document.getElementById('createFacilityForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const location = document.getElementById('location').value;
+    const contact = document.getElementById('contact').value;
+    const hours = document.getElementById('hours').value;
+    const category = document.getElementById('category').value;
+
+    try {
+        const response = await fetch('http://127.0.0.1:8000/facilities/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, location, contact, hours, category })
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            document.getElementById('results').innerHTML = `<p>Facility created: ${JSON.stringify(data)}</p>`;
+        } else {
+            document.getElementById('results').innerHTML = '<p>Failed to create facility.</p>';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('results').innerHTML = '<p>Error creating facility.</p>';
+    }
+});
+
+// Function to handle form submission for fetching facilities by category
+document.getElementById('fetchFacilitiesForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const category = document.getElementById('fetchCategory').value;
+
+    try {
+        const response = await fetch(`http://127.0.0.1:8000/facilities/${category}`);
+
+        if (response.ok) {
+            const data = await response.json();
+            const facilities = data.map(facility => `
+                <div>
+                    <h3>${facility.name}</h3>
+                    <p>Location: ${facility.location}</p>
+                    <p>Contact: ${facility.contact}</p>
+                    <p>Hours: ${facility.hours}</p>
+                    <p>Category: ${facility.category}</p>
+                </div>
+            `).join('');
+            document.getElementById('results').innerHTML = facilities;
+        } else {
+            document.getElementById('results').innerHTML = '<p>No facilities found.</p>';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('results').innerHTML = '<p>Error fetching facilities.</p>';
+    }
+});
