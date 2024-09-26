@@ -1,0 +1,59 @@
+-- Table for Restaurants
+CREATE TABLE Restaurants (
+    Name TEXT NOT NULL,
+    Location TEXT NOT NULL,
+    ContactNumber TEXT NOT NULL
+);
+
+-- Table for Hospitals
+CREATE TABLE Hospitals (
+    Name TEXT NOT NULL,
+    Location TEXT NOT NULL,
+    ContactNumber TEXT NOT NULL
+);
+
+-- Table for Shops
+CREATE TABLE Shops (
+    Name TEXT NOT NULL,
+    Location TEXT NOT NULL,
+    ContactNumber TEXT NOT NULL
+);
+
+-- Table for Places to Visit
+CREATE TABLE places_to_visit (
+    Name TEXT NOT NULL,
+    Location TEXT NOT NULL
+);
+
+-- Insert data into Restaurants table
+INSERT INTO Restaurants (Name, Location, ContactNumber) VALUES
+('Aroma Multicuisine Restaurant', 'Bigstay Apartment Hotel, Aditya Nagar, Tada, Andhra Pradesh 524401', '917660011166'),
+('The Lagoon Restaurant', 'Comfort Stay Apart Hotel, 7 Bigsun Avenue, Tada, Andhra Pradesh 524401', '91 7660011164'),
+('Krishna Restaurant – Serving traditional South Indian fare.', 'GNT Road, Near ITI Tada, Chennai – Srikakulam Highway, Tada, Andhra Pradesh 524401', '8623249571'),
+('Swarnamukhi - Hotel', 'No 46/7C, NH5, Sri City, Tada, Andhra Pradesh', '91 79012 52222'),
+('Illara - Hotel and Restaurant', '1A, 1B, Rajiv Gandhi Salai, OMR, Navalur, Chennai, Tamil Nadu 600130', '98846 88882'),
+('Swathi Restaurant', 'Police Station, 1460, Beside Tada, Tada, Andhra Pradesh 524401.', '(086232)-49168');
+
+-- Insert data into Hospitals table
+INSERT INTO Hospitals (Name, Location, ContactNumber) VALUES
+('Medicover Clinic', 'D no 4-198, Assessment num 798, grama panchayat, GNT Road, opp. Honda showroom, beside bullet transport, Tada, Sri City, Andhra Pradesh 524401', '040 6833 4455'),
+('Sankara Nethralaya Eye Hospital', '305, Medical Care Center, Sri City, North, 2nd St, Sector 3, Varadaiahpalem, Andhra Pradesh 517541', '85763 08600'),
+('Sri Ramachandra Hospital', 'Ground Floor, 305 North, 2nd St, Sri City, Andhra Pradesh 517646', '85762 93329'),
+('Kanchi Kamakoti Child’s Trust Hospital', 'Sri City, Andhra Pradesh', '85762 93329'),
+('Care Dental International Centre', '2nd Floor, Emergency Care Centre, Sri City, Andhra Pradesh 517646', '099899 33755');
+
+-- Insert data into Shops table
+INSERT INTO Shops (Name, Location, ContactNumber) VALUES
+('Dhanush Super Market', 'Arcade, Sri City', '90521 23454'),
+('PK Swamy Stores', 'Opposite Biryani Hub', 'No phone number provided'),
+('Ragavendera Supermarket', 'Shree Krishna Super Market, GNT Road, Mandal, Tada, Andhra Pradesh 524401', '80085 00904'),
+('Sangeetha Mobiles', 'Arcade, Sri City', '99483 70320'),
+('Courier Services', 'Next to H&C', '86023 31234');
+
+-- Insert data into Places to Visit table
+INSERT INTO places_to_visit (Name, Location) VALUES
+('Pulicat Lake', 'Get Directions'),
+('Tada Falls', 'Get Directions'),
+('Sriharikota', 'Get Directions'),
+('Srikalahasti', 'Get Directions'),
+('Tirupati-Tirumala Temples', 'Get Directions');

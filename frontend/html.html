@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facilities Search</title>
+    <link rel="stylesheet" href="/static/styles.css"> <!-- Optional CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Welcome to SriCity Facilities Directory</h1>
+    </header>
+
+    <main>
+        <!-- Search form -->
+        <form action="/search" method="get">
+            <input type="text" name="query" placeholder="Search for facilities..." required>
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Display search results -->
+        {% if facilities %}
+            <h2>Search Results:</h2>
+            <ul>
+                {% for facility in facilities %}
+                    <li>
+                        <strong>{{ facility.name }}</strong><br>
+                        Location: {{ facility.location }}<br>
+                        Contact: {{ facility.contact }}<br>
+                        Hours: {{ facility.hours }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% elif error %}
+            <p>{{ error }}</p>
+        {% endif %}
+
+
+
+
+
+
+
+
+        <!-- Display categories -->
+        <h2>Browse by Category:</h2>
+        <ul>
+            <li><a href="/restaurants">Restaurants</a></li>
+            <li><a href="/shops">Shops</a></li>
+            <li><a href="/travel">Travel</a></li>
+            <li><a href="/places_to_visit">Places to Visit</a></li>
+            <li><a href="/hospitals">Hospitals</a></li>
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SriCity Facilities Directory</p>
+    </footer>
+</body>
+</html>
