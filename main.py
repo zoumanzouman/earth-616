@@ -1,10 +1,22 @@
-from fastapi import FastAPI, Request
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+import models
+from database import engine, SessionLocal, get_db
+from fastapi import FastAPI, Depends, Request, HTTPException
+from sqlalchemy.orm import Session
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
 
+# Initialize the FastAPI application
 app = FastAPI()
+
+# Create the database tables
+models.Base.metadata.create_all(bind=engine)
+
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
+
+# Template setup
+templates = Jinja2Templates(directory="frontend")
 
 # Middleware for CORS
 origins = ["http://127.0.0.1:8000/"]
@@ -16,56 +28,76 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Static files
-app.mount("/static", StaticFiles(directory="frontend"), name="static")
-
-# Template setup
-templates = Jinja2Templates(directory="frontend")
-
 # Endpoint for homepage
 @app.get("/", response_class=HTMLResponse)
 async def get_homepage(request: Request): 
     return templates.TemplateResponse("html.html", {"request": request})
 
-# Data
-facilities_data = {
-    "restaurants": [
-        {"name": "Swarnamukhi", "location": "SriCity Center", "contact": "123-456-789", "hours": "10 AM - 9 PM"},
-        {"name": "Quick Bites", "location": "SriCity Mall", "contact": "987-654-321", "hours": "11 AM - 10 PM"}
-    ],
-    "shops": [
-        {"name": "The Fashion Store", "location": "SriCity Mall", "contact": "555-111-222", "hours": "10 AM - 8 PM"},
-        {"name": "TechMart", "location": "Tech Plaza", "contact": "444-333-222", "hours": "9 AM - 7 PM"}
-    ],
-    "travel": [
-        {"name": "SriCity Cab Service", "location": "SriCity Center", "contact": "111-222-333", "hours": "24/7"},
-        {"name": "Local Bus Service", "location": "SriCity Bus Depot", "contact": "999-888-777", "hours": "6 AM - 11 PM"}
-    ],
-    "places_to_visit": [
-        {"name": "Nature Park", "location": "North SriCity", "contact": "777-888-999", "hours": "6 AM - 6 PM"},
-        {"name": "Historical Museum", "location": "SriCity Center", "contact": "444-555-666", "hours": "10 AM - 5 PM"}
-    ],
-    "hospitals": [
-        {"name": "SriCity General Hospital", "location": "Main Road", "contact": "333-444-555", "hours": "24/7"},
-        {"name": "SriCity Clinic", "location": "Tech Park", "contact": "222-111-999", "hours": "9 AM - 8 PM"}
-    ]
-}
+print('test point 1')
+
+
 
 # Endpoint for searching facilities
 @app.get("/search", response_class=HTMLResponse)
-async def search_facilities(request: Request, query: str):
-    results = []
-    for category, facilities in facilities_data.items():
-        for facility in facilities:
-            if query.lower() in facility["name"].lower():
-                results.append(facility)
-    return templates.TemplateResponse("html.html", {"request": request, "facilities": results if results else None, "error": "No facilities found." if not results else None})
+async def search_facilities(request: Request, query: str = None, db: Session = Depends(get_db)):
+    search_results = []
+    
+    #: Log the received query
+    print(f"Search query received: {query}")
+
+    if query:
+        query = query.strip()  # Remove unnecessary spaces
+
+        # Search across all models using ilike for case-insensitive matching
+        for model in [models.Restaurant, models.Hospital, models.Shop, models.PlaceToVisit]:
+            facilities = db.query(model).filter(model.name.ilike(f"%{query}%")).all()
+            if facilities:
+                for facility in facilities:
+                    search_results.append({
+                        "name": facility.name,
+                        "location": facility.location,
+                        "contact": getattr(facility, "contact", None),
+                        "category": model.__name__  # Optional: Add category for clarity
+                    })
+    
+    # : Log the search results
+    print(f"Facilities found: {search_results}")
+
+    return templates.TemplateResponse("html.html", {
+        "request": request, 
+        "facilities": search_results if search_results else None,
+        "error": "No facilities found." if not search_results else None
+    })
+
+print('test point2')
 
 # Endpoint for fetching facilities by category
 @app.get("/{category}", response_class=HTMLResponse)
-async def get_facilities(request: Request, category: str):
-    if category in facilities_data:
-        return templates.TemplateResponse("html.html", {"request": request, "facilities": facilities_data[category]})
-    return templates.TemplateResponse("html.html", {"request": request, "error": "Category not found."})
+async def get_facilities(request: Request, category: str, db: Session = Depends(get_db)):
+    category_map = {
+        "restaurants": models.Restaurant, 
+        "shops": models.Shop,
+        "hospitals": models.Hospital,
+        "places_to_visit": models.PlaceToVisit
+    }
 
+    if category.lower() in category_map:
+        model = category_map[category.lower()]
+        facilities = db.query(model).all()
+
+        facilities_list = [{"name": facility.name, "location": facility.location, "contact": getattr(facility, "contact", None)} for facility in facilities]
+
+        return templates.TemplateResponse("html.html", {
+            "request": request, 
+            "facilities": facilities_list,
+            "error": None
+        })
+
+    return templates.TemplateResponse("html.html", {
+        "request": request, 
+        "facilities": None,
+        "error": "Category not found."
+    })
+
+print('test point3')
 
