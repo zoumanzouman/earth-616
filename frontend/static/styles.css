@@ -3,12 +3,16 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-image: url("\Sri-City-768x432.jpeg"); /* Adding a background image */
+    background-size: cover; /* Ensuring  the image covers the entire page */
+    background-position: center;
+    background-repeat: no-repeat;
     background-color: #f4f4f9;
     color: #333;
 }
 
 header {
-    background-color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.9); /* Semi-transparent background for header */
     color: white;
     padding: 10px 0;
     text-align: center;
@@ -18,12 +22,12 @@ main {
     margin: 20px auto;
     padding: 20px;
     max-width: 900px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for the content */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2 {
-    color: dark green;
+    color: darkgreen;
 }
 
 form {
@@ -79,7 +83,7 @@ a:hover {
 footer {
     text-align: center;
     padding: 10px 0;
-    background-color: #f4f4f9;
+    background-color: rgba(244, 244, 249, 0.9); /* Semi-transparent footer */
     margin-top: 40px;
     font-size: 0.9rem;
     color: #777;
