@@ -29,7 +29,8 @@ INSERT INTO Restaurants (Name, Location, ContactNumber) VALUES
 ('Krishna Restaurant – Serving traditional South Indian fare.', 'GNT Road, Near ITI Tada, Chennai – Srikakulam Highway, Tada, Andhra Pradesh 524401', '8623249571'),
 ('Swarnamukhi - Hotel', 'No 46/7C, NH5, Sri City, Tada, Andhra Pradesh', '91 79012 52222'),
 ('Illara - Hotel and Restaurant', '1A, 1B, Rajiv Gandhi Salai, OMR, Navalur, Chennai, Tamil Nadu 600130', '98846 88882'),
-('Swathi Restaurant', 'Police Station, 1460, Beside Tada, Tada, Andhra Pradesh 524401.', '(086232)-49168');
+('Swathi Restaurant', 'Police Station, 1460, Beside Tada, Tada, Andhra Pradesh 524401.', '(086232)-49168')
+('Biryani Hub', 'Tada', '085000 07784');
 
 INSERT INTO Healthcare (Name, Location, ContactNumber) VALUES
 ('Medicover Clinic', 'D no 4-198, Assessment num 798, grama panchayat, GNT Road, opp. Honda showroom, beside bullet transport, Tada, Sri City, Andhra Pradesh 524401', '040 6833 4455'),
