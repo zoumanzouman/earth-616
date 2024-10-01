@@ -32,12 +32,15 @@ INSERT INTO Restaurants (Name, Location, ContactNumber) VALUES
 ('Swathi Restaurant', 'Police Station, 1460, Beside Tada, Tada, Andhra Pradesh 524401.', '(086232)-49168')
 ('Biryani Hub', 'Tada', '085000 07784');
 
-INSERT INTO Healthcare (Name, Location, ContactNumber) VALUES
+
+INSERT INTO Healthcare and Services (Name, Location, ContactNumber) VALUES
 ('Medicover Clinic', 'D no 4-198, Assessment num 798, grama panchayat, GNT Road, opp. Honda showroom, beside bullet transport, Tada, Sri City, Andhra Pradesh 524401', '040 6833 4455'),
 ('Sankara Nethralaya Eye Hospital', '305, Medical Care Center, Sri City, North, 2nd St, Sector 3, Varadaiahpalem, Andhra Pradesh 517541', '85763 08600'),
 ('Sri Ramachandra Hospital', 'Ground Floor, 305 North, 2nd St, Sri City, Andhra Pradesh 517646', '85762 93329'),
 ('Kanchi Kamakoti Child’s Trust Hospital', 'Sri City, Andhra Pradesh', '85762 93329'),
-('Care Dental International Centre', '2nd Floor, Emergency Care Centre, Sri City, Andhra Pradesh 517646', '099899 33755');
+('Care Dental International Centre', '2nd Floor, Emergency Care Centre, Sri City, Andhra Pradesh 517646', '099899 33755')
+('Sri City Police Station', '3880, Central Expy, Varadaipalam, Sri City, Andhra Pradesh 517646', '94407 22864')
+('Sri City Fire Station', '7580, Central Expy, Appaiahpalem, Sri City, Andhra Pradesh 517646', '093944 81101');
 
 INSERT INTO Shopping (Name, Location, ContactNumber) VALUES
 ('Dhanush Super Market', 'Arcade, Sri City', '90521 23454'),
@@ -51,4 +54,5 @@ INSERT INTO Recreation (Name, Location) VALUES
 ('Tada Falls', 'Get Directions'),
 ('Sriharikota', 'Get Directions'),
 ('Srikalahasti', 'Get Directions'),
-('Tirupati-Tirumala Temples', 'Get Directions');
+('Tirupati-Tirumala Temples', 'Get Directions')
+('V Epiq 4K 3D', 'Sullurpeta, Sarvareddi Khandrika, Andhra Pradesh 524121');
