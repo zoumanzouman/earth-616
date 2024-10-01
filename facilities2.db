@@ -30,7 +30,11 @@ INSERT INTO Restaurants (Name, Location, ContactNumber) VALUES
 ('Swarnamukhi - Hotel', 'No 46/7C, NH5, Sri City, Tada, Andhra Pradesh', '91 79012 52222'),
 ('Illara - Hotel and Restaurant', '1A, 1B, Rajiv Gandhi Salai, OMR, Navalur, Chennai, Tamil Nadu 600130', '98846 88882'),
 ('Swathi Restaurant', 'Police Station, 1460, Beside Tada, Tada, Andhra Pradesh 524401.', '(086232)-49168')
-('Biryani Hub', 'Tada', '085000 07784');
+('Biryani Hub', 'Tada', '085000 07784')
+('St. Shahib Bhagat Ji Pure Veg', 'GNT Road, Mandal, Tada, Andhra Pradesh 524401', '9964739011')
+('Inn Creekside', '315, Coconut Drive, Sri City, Andhra Pradesh 517646', '+91-9840619068')
+('Food Court', 'Business Centre, 270 Peepul Boulevard, Sri City- 517646', '8623249994')
+('Foodie Box', 'NH-16, SRI CITY ZERO POINT, Tada 524401', '079049 99304');
 
 
 INSERT INTO Healthcare and Services (Name, Location, ContactNumber) VALUES
