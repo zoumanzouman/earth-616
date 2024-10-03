@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <div id="adminContent"></div>
+<div class="admin-actions">
+    <h2>Manage Data</h2>
+    <form id="addDataForm">
+        <h3>Add Data</h3>
+        <input type="text" id="addDataInput" placeholder="Enter data">
+        <button type="button" onclick="addData()">Add</button>
+    </form>
+    <form id="removeDataForm">
+        <h3>Remove Data</h3>
+        <input type="number" id="removeDataId" placeholder="Enter data ID">
+        <button type="button" onclick="removeData()">Remove</button>
+    </form>
+    <form id="editDataForm">
+        <h3>Edit Data</h3>
+        <input type="number" id="editDataId" placeholder="Enter data ID">
+        <input type="text" id="editDataInput" placeholder="Enter new data">
+        <button type="button" onclick="editData()">Edit</button>
+    </form>
+</div>
+<script>
+    function addData() {
+        // Logic to add data
+        console.log('Add data functionality');
+    }
+    function removeData() {
+        // Logic to remove data
+        console.log('Remove data functionality');
+    }
+    function editData() {
+        // Logic to edit data
+        console.log('Edit data functionality');
+    }
+</script>
+
+        <button id="logoutBtn">Logout</button>
+    </div>
+    <script>
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = '/admin_login';
+        }
+
+        fetch('/admin/', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('adminContent').textContent = JSON.stringify(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('adminContent').textContent = 'Error loading admin content';
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('token');
+            window.location.href = '/';
+        });
+    </script>
+</body>
+</html>
