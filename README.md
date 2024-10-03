@@ -30,11 +30,6 @@ Prerequisites
 * Python 3.8+
 * Pip (Python package manager)
 
-Steps
-* Clone the repository:
-* bash
-* Copy code: git clone https://github.com/yourusername/facilities-directory.git
-            cd facilities-directory
 
 Set up a virtual environment (optional but recommended):
 * bash
@@ -45,6 +40,7 @@ Install dependencies:
 bash
 Copy code
 pip install -r requirements.txt
+
 Set up the database:
 
 Initialize the database using SQLAlchemy with FastAPI’s dependency injection:
@@ -63,6 +59,7 @@ Running the Project
 To start the FastAPI development server:
 bash
 Copy code
+or fastapi dev main.py
 uvicorn main:app --reload
 By default, the app will run at http://127.0.0.1:8000/. You can access the following routes:
 * Homepage: http://127.0.0.1:8000/
