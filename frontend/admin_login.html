@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/static/bootstrap.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
@@ -12,10 +11,10 @@
 <div class="container">
     <div class="container">
         <h1>Admin Login</h1>
-        <form class="form-group" id="loginForm">
-            <input class="form-control" type="text" id="username" placeholder="Username" required>
-            <input class="form-control" type="password" id="password" placeholder="Password" required>
-            <button class="btn btn-primary" type="submit">Login</button>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
         </form>
         <p id="message"></p>
     </div>
