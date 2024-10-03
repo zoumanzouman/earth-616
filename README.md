@@ -89,6 +89,7 @@ Challenges and Future Work
 Challenges
 * Search Suggestions: We attempted to implement dynamic search suggestions but faced issues with JavaScript integration and opted to focus on basic search functionality.
 * Admin Authentication: Securing the admin dashboard using JWT tokens was initially challenging, but we managed to implement it using OAuth2PasswordBearer and FastAPI's built-in JWT library.
+* Admin Panel: Login was successfull implemented but the admin panel has not been fully set up yet.
 * Scope Reduction: Initially, we had planned for a more interactive website, but due to team changes, we scaled the project down to focus on core features.
 
 Future Work
