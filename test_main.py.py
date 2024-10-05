@@ -2,11 +2,12 @@ import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from main import app, get_db  # Import your FastAPI app and DB dependency
+from main import app, get_db  # Import FastAPI app and DB dependency
 from database import Base
 
 # Test client for FastAPI
 client = TestClient(app)
+
 
 # Set up an in-memory SQLite database for testing
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
@@ -41,7 +42,7 @@ def test_search_facilities(test_db):
 def test_get_admin_login():
     response = client.get("/admin_login")
     assert response.status_code == 200
-    assert "Admin Login" in response.text  # Update with actual content
+    assert "Admin Login" in response.text 
 
 # Test fetching facilities by category
 @pytest.mark.parametrize("category", ["restaurants", "shops", "hospitals", "places_to_visit"])
